@@ -15,35 +15,33 @@ build/
 .DS_Store
 Thumbs.db
 
-# Variables de entorno y configuración local
+# Archivos de entorno
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+
+# Archivos de lock de dependencia (si decides ignorarlos)
+# package-lock.json
+# yarn.lock
+
+# Entornos virtuales de Python
+venv/
+.venv/
+backend/Lib/
+backend/Scripts/
+
+# Archivos Python compilados
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+
+# Archivos de entorno
+.env
 
 # Archivos de lock de dependencia
-yarn.lock
-
-# Cobertura de pruebas
-coverage/
+pipfile.lock
+poetry.lock
 
 # Archivos de configuración de IDE/Editor
 .vscode/
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-
-# Archivos de servicios
-.DS_Store
-/.sass-cache/
-/connect.lock
-/coverage/
-/npm-debug.log
-/gruntfile.js
-/bower_components
-/bower.json
-/testem.json
-/testem*
