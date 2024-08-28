@@ -5,9 +5,27 @@ function App() {
   const [url, setUrl] = useState('');
   const [qrCode, setQrCode] = useState('');
 
-  const generateQrCode = () => {
+  const generateQrCode = async () => {
     if (url) {
-      setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=200x200`);
+      try {
+        const response = await fetch('https://qr-generador-back.onrender.com/generate_qr', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ url }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al generar el código QR');
+        }
+
+        const blob = await response.blob();
+        const qrCodeUrl = URL.createObjectURL(blob);
+        setQrCode(qrCodeUrl);
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   };
 
