@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import qrcode
 import io
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -32,4 +33,5 @@ def generate_qr():
     return send_file(img_io, mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Usar el puerto proporcionado por Render
+    app.run(host='0.0.0.0', port=port, debug=True)  # Escuchar en todas las interfaces
